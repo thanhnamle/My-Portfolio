@@ -81,7 +81,7 @@ export default function Navbar({ variant = "light" }: FooterProps) {
               : "bg-indigo-600 hover:bg-indigo-700 text-white"
           }`}
         >
-          Get in touch
+          Review My CV
         </Button>
       </nav>
     </header>

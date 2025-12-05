@@ -37,20 +37,6 @@ export default function AboutHeader() {
         Transforming ideas into engaging digital experiences. I specialize in
         building intuitive, accessible, and visually delightful products.
       </p>
-
-      {/* CTA Buttons */}
-      <div className="flex justify-center gap-4">
-        <Button className="bg-purple-600 hover:bg-purple-700 px-6 py-5 rounded-full">
-          See My Journey
-        </Button>
-
-        <Button
-          variant="outline"
-          className="px-6 py-5 rounded-full border-white/30 text-black hover:bg-white/10"
-        >
-          Let&apos;s Talk
-        </Button>
-      </div>
     </section>
   );
 }
