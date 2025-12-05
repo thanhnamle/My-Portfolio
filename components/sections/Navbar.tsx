@@ -1,26 +1,40 @@
+// components/sections/Navbar.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
-type NavbarProps = {
+type FooterProps = {
   variant?: "light" | "dark";
 };
 
-export default function Navbar({ variant = "light" }: NavbarProps) {
+// Định nghĩa danh sách link để dễ map và xử lý logic
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
+
+export default function Navbar({ variant = "light" }: FooterProps) {
   const isDark = variant === "dark";
+  const pathname = usePathname();
 
   const textClass = isDark ? "text-gray-200 hover:text-white" : "text-gray-700 hover:text-black";
+  const activeClass = isDark ? "text-white" : "text-black font-semibold";
   const nameClass = isDark ? "text-gray-100" : "text-gray-900";
+  const underlineClass = isDark ? "bg-purple-500" : "bg-indigo-600";
 
   return (
-    <header className="w-full py-6 bg-transparent">
+    <header className="absolute top-0 left-0 w-full z-50 py-6 bg-transparent">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6">
         {/* Left: Avatar + Name */}
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/avatar.png"
+            src="/Avatar.png"
             width={34}
             height={34}
             alt="avatar"
@@ -29,19 +43,34 @@ export default function Navbar({ variant = "light" }: NavbarProps) {
           <span className={`font-semibold tracking-tight ${nameClass}`}>
             Seohu Le
           </span>
-        </div>
+        </Link>
 
-        {/* Center Menu */}
-        <div className={`hidden md:flex items-center gap-10 text-sm`}>
-          <Link href="/projects" className={textClass}>
-            Projects
-          </Link>
-          <Link href="/about" className={textClass}>
-            About
-          </Link>
-          <Link href="/contact" className={textClass}>
-            Contact
-          </Link>
+        {/* Center Menu với Sliding Underline */}
+        <div className="hidden md:flex items-center gap-8 relative">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative px-1 py-1 text-sm transition-colors ${
+                  isActive ? activeClass : textClass
+                }`}
+              >
+                {link.name}
+                
+                {/* Hiệu ứng gạch chân thần thánh */}
+                {isActive && (
+                  <motion.span
+                    layoutId="navbar-underline"
+                    className={`absolute left-0 bottom-0 block h-0.5 w-full ${underlineClass}`}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         {/* CTA */}

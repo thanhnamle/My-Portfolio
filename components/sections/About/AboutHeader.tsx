@@ -46,7 +46,7 @@ export default function AboutHeader() {
 
         <Button
           variant="outline"
-          className="px-6 py-5 rounded-full border-white/30 text-white hover:bg-white/10"
+          className="px-6 py-5 rounded-full border-white/30 text-black hover:bg-white/10"
         >
           Let&apos;s Talk
         </Button>
