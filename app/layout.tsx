@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -13,7 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      {/* Thêm suppressHydrationWarning vào đây */}
+      <body className="antialiased" suppressHydrationWarning>
         <main className="flex-1 w-full">
           {children}
         </main>

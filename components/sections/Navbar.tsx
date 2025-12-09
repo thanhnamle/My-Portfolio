@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { FileText } from "lucide-react";
 
 type FooterProps = {
   variant?: "light" | "dark";
@@ -75,13 +76,17 @@ export default function Navbar({ variant = "light" }: FooterProps) {
 
         {/* CTA */}
         <Button
+          asChild
           className={`rounded-full px-5 text-sm ${
             isDark
               ? "bg-purple-600 hover:bg-purple-700 text-white"
               : "bg-indigo-600 hover:bg-indigo-700 text-white"
           }`}
         >
-          Review My CV
+          <Link href="/cv" className="flex items-center gap-2">
+            <FileText size={18} /> {/* Icon văn bản */}
+            Review My CV
+          </Link>
         </Button>
       </nav>
     </header>
