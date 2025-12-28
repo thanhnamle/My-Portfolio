@@ -6,13 +6,13 @@ import ContactSection from "@/components/sections/Contacts/ContactSection";
 export default function ContactPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#050514] text-white">
-      <Navbar variant="dark"/>
+      <Navbar variant="light"/>
 
       <main className="flex-1">
         <ContactSection />
       </main>
 
-      <Footer variant="dark" />
+      <Footer variant="light" />
     </div>
   );
 }

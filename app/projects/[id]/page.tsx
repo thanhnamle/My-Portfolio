@@ -32,7 +32,7 @@ export default function ProjectDetailPage() {
   // TỪ ĐÂY TRỞ ĐI: Thay thế tất cả 'projectData' bằng biến 'project'
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 font-sans">
-      <Navbar variant="light" />
+      <Navbar />
 
       <main className="flex-1 pt-32 pb-20">
         <div className="max-w-5xl mx-auto px-6">
